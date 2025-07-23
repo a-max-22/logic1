@@ -19,7 +19,6 @@ namespace AverageCalculator.Tests
         [ExpectedException(typeof(ArgumentException))]
         public void CalculateAverage_WithEmptyArray_ThrowsArgumentException()
         {
-            
             int[] numbers = new int[0];
             
             _calculator.CalculateAverage(numbers);
@@ -94,6 +93,7 @@ namespace AverageCalculator.Tests
         [ExpectedException(typeof(ArgumentException))]
         public void CalculateAverage_WithLargeNumbersOverflow_ThrowsException()
         {
+            // this test will fail because no exception would be thrown in case of overflow
             int[] numbers = { int.MaxValue, int.MaxValue };
 
             double result = _calculator.CalculateAverage(numbers);
