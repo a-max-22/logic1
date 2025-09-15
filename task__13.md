@@ -58,8 +58,14 @@
 
 Доказательство для SortRecursive:
 1) Предусловие: low < high
-2) Инвариант: для любого 0 < i <= low, low + 1 <= j < high выполняется arr[i] <= arr[j]
+2) Инвариант: существует pivot_index такой, что для любого 0 < i <= pivot_index, pivot_index + 1 <= j < high выполняется arr[i] <= arr[pivot] <= arr[j]
 3) Постусловие: arr[i] < arr[j], для любого 0 <= i < j < arr.len 
+
+Начало: low = 0, high = array.len
+Процесс:  находится pivot = arr[pivot_index], low <= pivot_index < high, через применение операции Partition, которое обеспечивает выполнение 
+условия что для любого 0 < i <= pivot_index, pivot_index + 1 <= j < high выполняется arr[i] <= arr[pivot] <= arr[j]
+Итерация повторяется для low = 0, high =  pivot_index ; low = pivot_index + 1, high = high
+Завершение: когда массивах остается по два элемента, гарантируется, что arr[i] < arr[j], отсюда следуюет выполнение финального условия.
 
 Доказательство для Partition:
 Предусловие: `arr.len >= 0, low < high`  
